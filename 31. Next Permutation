@@ -1,0 +1,38 @@
+ static  void nextPermutation(int nums[]){
+        int n=nums.length;
+        int breakpt=-1;;
+        for(int i=n-1;i>=0;i--){
+            if(i>0&&nums[i]>nums[i-1]){
+                breakpt=i-1;
+                break;
+            }
+        }
+        if(breakpt==-1){
+            reverse(nums,0);
+            return;
+        }
+        int oneGreat=0;
+
+        for(int i=n-1;i>=0;i--){
+            if(nums[i]>nums[breakpt]){
+                oneGreat=i;
+                break;
+            }
+        }
+        swap(nums,breakpt,oneGreat);
+        reverse(nums, breakpt+1);
+    }
+    static void swap(int nums[],int ind1,int ind2){
+        int temp=nums[ind1];
+        nums[ind1]=nums[ind2];
+        nums[ind2]=temp;
+    }
+    static void reverse( int nums[],int index){
+        int f=index;
+        int sec=nums.length-1;
+        while(sec>=f){
+            swap(nums,f,sec);
+            f++;
+            sec--;
+        }
+    }

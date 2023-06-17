@@ -1,0 +1,23 @@
+  static void subsetsWithoutDuplicates(List<List<Integer>> list,int []nums){
+        Arrays.sort(nums);
+
+        list.add(new ArrayList<>());
+        int end=0;
+        for(int j=0;j<nums.length;j++){
+           int st=0;
+            int n=list.size();
+            if(j>0&&nums[j]==nums[j-1]){
+                st=end+1;
+            }
+            end= list.size()-1;
+            for(int i=st;i<n;i++){
+                List<Integer> copiedList=new ArrayList<>(list.get(i));
+
+                copiedList.add(nums[j]);
+                System.out.println(copiedList);
+                list.add(copiedList);
+                System.out.println(list);
+            }
+        }
+
+    }
